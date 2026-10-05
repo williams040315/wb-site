@@ -414,46 +414,60 @@ nav {
 
 .hero-tags {
   display: flex;
-
   flex-wrap: wrap;
-
-  gap: 8px;
-
-  margin-top: 27px;
+  gap: 10px;
+  margin-top: 30px;
 }
 
-.tag {
-  padding:
-    9px
-    12px;
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 
-  border:
-    1px solid
-    rgba(88, 229, 220, 0.28);
+  padding: 10px 13px;
 
-  background:
-    rgba(88, 229, 220, 0.025);
+  border: 1px solid rgba(255,255,255,0.12);
 
-  color: var(--white-2);
+  color: #cbd4d5;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   font-size: 12px;
 
-  line-height: 1.25;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+  background: rgba(255,255,255,0.015);
 }
 
-.tag:hover {
-  color: var(--cyan);
+.skill-icon {
+  width: 22px;
+  height: 22px;
 
-  border-color:
-    rgba(88, 229, 220, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  background:
-    rgba(88, 229, 220, 0.06);
+  color: #58e5dc;
+
+  border: 1px solid rgba(88,229,220,0.35);
+
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+}
+
+.skill:hover {
+  border-color: rgba(88,229,220,0.45);
+  color: #ffffff;
+}
+
+.skill:hover .skill-icon {
+  color: #ffffff;
+  border-color: #58e5dc;
 }
 
 
