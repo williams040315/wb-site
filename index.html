@@ -1,109 +1,1331 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)https://www.w3schools.com/howto/tryw3css_templates_dark_portfolio.htm# -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Williams BRETT</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="w3.css">
-<link rel="stylesheet" href="css">
-<link rel="stylesheet" href="font-awesome.min.css">
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<link rel="icon" type="image/x-icon" href="avatar.jpg">
-</head><body class="w3-black">
+  <title>William Brett — Scientific Engineering</title>
 
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Williams Brett.</h1>
-    <p>Specialist in electronics, industrial computing, and engineering sciences.</p>
-    <a href="https://www.linkedin.com/in/williams-brett-780a8374/"><img src="avatar.jpg" alt="Williams Brett" class="w3-image"></a>
-  </header>
+  <meta
+    name="description"
+    content="Scientific engineering, experimental systems, instrumentation, imaging, automation and dynamic measurement."
+  />
 
-  <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About me</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>I study scientific needs by proposing techniques and methods for measurements, characterizations or adapted observations (scientific instrumentation / experimental techniques). My activity consists of analyzing metrological constraints and designing or developing experimentation and measurement chains. My achievements are proofs of concept, qualification test benches, laboratory instruments, or solutions for industry (industrial partnership). I also develop associated applications and interfaces that can be implemented on any operating system or on embedded digital cards. I integrate acquisition, measurement scenarios from different techniques including real-time imaging (use of AI algorithms), programming of mathematical models highlighted by researchers, real-time calculation of new laws (digital signal processing), and post-processing analysis.</p>
-    
-    <br>
-    
-    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">10+</span><br>
-        Contributions
+  <style>
+    :root {
+      --bg: #080a0d;
+      --bg-soft: #0d1014;
+      --panel: #11151a;
+      --panel-hover: #151a20;
+
+      --text: #f1f4f5;
+      --muted: #89929b;
+      --dim: #515a63;
+
+      --line: rgba(255,255,255,0.10);
+      --line-bright: rgba(255,255,255,0.20);
+
+      --cyan: #55e6e0;
+      --blue: #5c9cff;
+      --green: #83e6a0;
+      --orange: #ffb86b;
+
+      --max: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--cyan);
+      color: #071011;
+    }
+
+    /* ----------------------------------------
+       GLOBAL
+    ---------------------------------------- */
+
+    .container {
+      width: min(var(--max), calc(100% - 64px));
+      margin: auto;
+    }
+
+    .mono {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 140px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 0.7fr 2fr;
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    .section-number {
+      color: var(--dim);
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 86px);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      max-width: 900px;
+    }
+
+    .section-intro {
+      margin-top: 30px;
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 17px;
+    }
+
+    /* ----------------------------------------
+       BACKGROUND GRID
+    ---------------------------------------- */
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+      background-size: 60px 60px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0,0,0,.5) 40%,
+        transparent 100%
+      );
+    }
+
+    .glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(55, 220, 210, 0.06);
+      filter: blur(100px);
+      top: -250px;
+      right: -200px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ----------------------------------------
+       NAVIGATION
+    ---------------------------------------- */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+
+      height: 72px;
+
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,10,13,.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: monospace;
+      font-size: 13px;
+      letter-spacing: .12em;
+    }
+
+    .logo-mark {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--cyan);
+      display: grid;
+      place-items: center;
+      color: var(--cyan);
+      font-size: 11px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      color: var(--muted);
+      font-family: monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* ----------------------------------------
+       HERO
+    ---------------------------------------- */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .hero-label {
+      margin-bottom: 34px;
+    }
+
+    .hero-title {
+      font-size: clamp(58px, 9vw, 145px);
+      line-height: .84;
+      font-weight: 400;
+      letter-spacing: -.075em;
+      max-width: 1000px;
+    }
+
+    .hero-title span {
+      color: var(--cyan);
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin-top: 48px;
+
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-actions {
+      margin-top: 42px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      border: 1px solid var(--line-bright);
+      padding: 13px 18px;
+      font-family: monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(85,230,224,.04);
+    }
+
+    /* ----------------------------------------
+       SYSTEM DIAGRAM
+    ---------------------------------------- */
+
+    .system {
+      position: relative;
+      min-height: 500px;
+
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at center, rgba(85,230,224,.07), transparent 45%),
+        var(--panel);
+
+      padding: 24px;
+    }
+
+    .system-header {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dim);
+      font-family: monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .system-diagram {
+      position: absolute;
+      inset: 70px 35px 35px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .system-node {
+      border: 1px solid var(--line-bright);
+      background: rgba(8,10,13,.7);
+      padding: 17px 20px;
+
+      font-family: monospace;
+      font-size: 12px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .system-node strong {
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .system-node small {
+      color: var(--dim);
+    }
+
+    .system-arrow {
+      text-align: center;
+      color: var(--cyan);
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .system-node.active {
+      border-color: rgba(85,230,224,.55);
+      box-shadow: 0 0 30px rgba(85,230,224,.05);
+    }
+
+    /* ----------------------------------------
+       PRINCIPLE
+    ---------------------------------------- */
+
+    .principle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .principle-statement {
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .principle-statement span {
+      color: var(--cyan);
+    }
+
+    .principle-text {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 600px;
+    }
+
+    .principle-text p + p {
+      margin-top: 25px;
+    }
+
+    /* ----------------------------------------
+       METHODS
+    ---------------------------------------- */
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .method {
+      min-height: 260px;
+      padding: 30px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: .25s ease;
+    }
+
+    .method:hover {
+      background: var(--panel-hover);
+    }
+
+    .method-number {
+      color: var(--dim);
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    .method h3 {
+      margin-top: 60px;
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: -.025em;
+    }
+
+    .method p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .method-tags {
+      margin-top: 22px;
+      color: var(--cyan);
+      font-family: monospace;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    /* ----------------------------------------
+       PROJECTS
+    ---------------------------------------- */
+
+    .projects {
+      border-top: 1px solid var(--line);
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 90px 1fr 220px;
+      gap: 50px;
+
+      padding: 42px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project:hover {
+      background: rgba(255,255,255,.015);
+    }
+
+    .project-index {
+      color: var(--dim);
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .project h3 {
+      font-size: clamp(28px, 3vw, 48px);
+      font-weight: 400;
+      letter-spacing: -.045em;
+    }
+
+    .project-description {
+      margin-top: 15px;
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    .project-meta {
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--dim);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    .project-meta strong {
+      color: var(--cyan);
+      font-weight: 400;
+    }
+
+    /* ----------------------------------------
+       PLATFORM
+    ---------------------------------------- */
+
+    .platform {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .platform-title {
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: .92;
+      letter-spacing: -.06em;
+      font-weight: 400;
+    }
+
+    .platform-title span {
+      color: var(--cyan);
+    }
+
+    .platform-text {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .platform-list {
+      margin-top: 35px;
+      border-top: 1px solid var(--line);
+    }
+
+    .platform-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    .platform-item span:last-child {
+      color: var(--cyan);
+    }
+
+    /* ----------------------------------------
+       TIMELINE
+    ---------------------------------------- */
+
+    .timeline {
+      border-left: 1px solid var(--line);
+      margin-left: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 70px 50px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 5px;
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(85,230,224,.5);
+    }
+
+    .timeline-year {
+      color: var(--cyan);
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    .timeline-item h3 {
+      margin-top: 12px;
+      font-size: 27px;
+      font-weight: 400;
+    }
+
+    .timeline-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    /* ----------------------------------------
+       FOOTER
+    ---------------------------------------- */
+
+    footer {
+      padding: 100px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-title {
+      font-size: clamp(55px, 10vw, 150px);
+      line-height: .82;
+      letter-spacing: -.08em;
+      font-weight: 400;
+    }
+
+    .footer-title span {
+      color: var(--cyan);
+    }
+
+    .footer-bottom {
+      margin-top: 100px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+
+      display: flex;
+      justify-content: space-between;
+
+      color: var(--dim);
+      font-family: monospace;
+      font-size: 10px;
+    }
+
+    /* ----------------------------------------
+       RESPONSIVE
+    ---------------------------------------- */
+
+    @media (max-width: 900px) {
+
+      .container {
+        width: min(100% - 36px, var(--max));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .principle,
+      .platform {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 80px;
+      }
+
+      .system {
+        min-height: 420px;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .section-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 50px;
+      }
+
+      .methods-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        grid-template-columns: 50px 1fr;
+        gap: 20px;
+      }
+
+      .project-meta {
+        grid-column: 2;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================== -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        <span class="logo-mark">WB</span>
+        <span>SCIENTIFIC ENGINEERING</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#systems">Systems</a>
+        <a href="#methods">Methods</a>
+        <a href="#projects">Projects</a>
+        <a href="#platform">Platform</a>
+        <a href="#about">About</a>
       </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">10+</span><br>
-        Projects Done
+
+    </div>
+  </nav>
+
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="hero-label eyebrow">
+            Scientific Engineering / Experimental Systems / R&D
+          </div>
+
+          <h1 class="hero-title">
+            EXPERIMENTAL<br>
+            SYSTEMS<br>
+            THAT <span>ACT.</span>
+          </h1>
+
+          <p class="hero-description">
+            Designing and integrating experimental systems at the
+            intersection of instrumentation, imaging, computation,
+            automation and scientific research.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="button">Explore projects →</a>
+            <a href="#methods" class="button">Technical methods</a>
+          </div>
+
+        </div>
+
+
+        <!-- SYSTEM VISUAL -->
+
+        <div class="system">
+
+          <div class="system-header">
+            <span>Experimental architecture</span>
+            <span>SYS / 001</span>
+          </div>
+
+          <div class="system-diagram">
+
+            <div class="system-node">
+              <strong>OBSERVATION</strong>
+              <small>IMAGING / SENSORS</small>
+            </div>
+
+            <div class="system-arrow">↓</div>
+
+            <div class="system-node">
+              <strong>ACQUISITION</strong>
+              <small>DATA / SIGNAL</small>
+            </div>
+
+            <div class="system-arrow">↓</div>
+
+            <div class="system-node active">
+              <strong>REAL-TIME ANALYSIS</strong>
+              <small>VISION / AI / DSP</small>
+            </div>
+
+            <div class="system-arrow">↓</div>
+
+            <div class="system-node">
+              <strong>DECISION</strong>
+              <small>CONTROL LOGIC</small>
+            </div>
+
+            <div class="system-arrow">↓</div>
+
+            <div class="system-node">
+              <strong>ACTION</strong>
+              <small>ACTUATION / AUTOMATION</small>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">3+</span><br>
-        Labs
+    </section>
+
+
+    <!-- =========================================
+         CORE PRINCIPLE
+    ========================================== -->
+
+    <section class="section" id="systems">
+
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-number">01 / PRINCIPLE</div>
+
+          <div>
+            <h2 class="section-title">
+              From observation<br>
+              to dynamic control.
+            </h2>
+
+            <p class="section-intro">
+              Experimental information becomes an active component
+              of the experiment itself.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="principle">
+
+          <div class="principle-statement">
+            I design systems that
+            <span>observe</span>,
+            characterize and
+            <span>act</span>
+            on the phenomena they study.
+          </div>
+
+          <div class="principle-text">
+
+            <p>
+              The experimental system is considered as an integrated
+              architecture combining measurement, computation and
+              control.
+            </p>
+
+            <p>
+              Real-time imaging, sensor data, signal processing,
+              computer vision, artificial intelligence and embedded
+              systems can be combined to extract information from
+              an evolving physical system.
+            </p>
+
+            <p>
+              This information can then be used to dynamically adapt
+              the experimental conditions, creating new functions
+              of measurement, characterization and control.
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">10+</span><br>
-        Meetings
+
+    </section>
+
+
+    <!-- =========================================
+         METHODS
+    ========================================== -->
+
+    <section class="section" id="methods">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">02 / METHODS</div>
+
+          <div>
+            <h2 class="section-title">
+              Technologies<br>
+              become functions.
+            </h2>
+
+            <p class="section-intro">
+              The objective is not to accumulate technologies,
+              but to integrate them into useful experimental
+              functions.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="methods-grid">
+
+          <article class="method">
+            <div class="method-number">01</div>
+
+            <h3>Instrumentation</h3>
+
+            <p>
+              Measurement architectures, sensors, electronics
+              and experimental interfaces.
+            </p>
+
+            <div class="method-tags">
+              SENSORS · ELECTRONICS · ACQUISITION
+            </div>
+          </article>
+
+
+          <article class="method">
+            <div class="method-number">02</div>
+
+            <h3>Real-time imaging</h3>
+
+            <p>
+              Extracting quantitative information from evolving
+              experimental systems.
+            </p>
+
+            <div class="method-tags">
+              IMAGING · COMPUTER VISION · TRACKING
+            </div>
+          </article>
+
+
+          <article class="method">
+            <div class="method-number">03</div>
+
+            <h3>Computation</h3>
+
+            <p>
+              Processing experimental information from simple
+              digital systems to embedded architectures.
+            </p>
+
+            <div class="method-tags">
+              DSP · EMBEDDED · FPGA · SOFTWARE
+            </div>
+          </article>
+
+
+          <article class="method">
+            <div class="method-number">04</div>
+
+            <h3>AI / Data</h3>
+
+            <p>
+              Intelligent extraction and interpretation of
+              information from experimental observations.
+            </p>
+
+            <div class="method-tags">
+              AI · MACHINE LEARNING · DATA ANALYSIS
+            </div>
+          </article>
+
+
+          <article class="method">
+            <div class="method-number">05</div>
+
+            <h3>Automation</h3>
+
+            <p>
+              Turning measurements into decisions and
+              experimental actions.
+            </p>
+
+            <div class="method-tags">
+              AUTOMATION · CONTROL · ACTUATION
+            </div>
+          </article>
+
+
+          <article class="method">
+            <div class="method-number">06</div>
+
+            <h3>System integration</h3>
+
+            <p>
+              Designing complete experimental architectures
+              from scientific requirements to operation.
+            </p>
+
+            <div class="method-tags">
+              ARCHITECTURE · INTEGRATION · R&D
+            </div>
+          </article>
+
+        </div>
+
       </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PROJECTS
+    ========================================== -->
+
+    <section class="section" id="projects">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">03 / PROJECTS</div>
+
+          <div>
+            <h2 class="section-title">
+              Experimental<br>
+              systems.
+            </h2>
+
+            <p class="section-intro">
+              Selected developments across biology, soft matter,
+              rheophysics, physico-chemical processes and
+              industrial research.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="projects">
+
+          <article class="project">
+
+            <div class="project-index">001</div>
+
+            <div>
+              <h3>CyberSco.Py</h3>
+
+              <p class="project-description">
+                Adaptive experimental system combining
+                microfluidics, microscopy and real-time image
+                analysis to detect, track and quantify biological
+                objects and dynamically adapt the experiment.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <strong>Adaptive microscopy</strong><br>
+              Imaging<br>
+              Real-time analysis<br>
+              Automation
+            </div>
+
+          </article>
+
+
+          <article class="project">
+
+            <div class="project-index">002</div>
+
+            <div>
+              <h3>Instrumented rheology</h3>
+
+              <p class="project-description">
+                Experimental architectures coupling mechanical
+                solicitation, magnetic fields, imaging and
+                instrumentation for the study of complex
+                soft-matter systems.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <strong>Soft matter</strong><br>
+              Rheology<br>
+              Imaging<br>
+              Magnetic actuation
+            </div>
+
+          </article>
+
+
+          <article class="project">
+
+            <div class="project-index">003</div>
+
+            <div>
+              <h3>Hydrogel dynamics</h3>
+
+              <p class="project-description">
+                Imaging-based experimental systems for relating
+                morphological evolution to diffusion, adsorption
+                and desorption kinetics in hydrogel systems.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <strong>Physico-chemistry</strong><br>
+              Imaging<br>
+              Kinetics<br>
+              Characterization
+            </div>
+
+          </article>
+
+
+          <article class="project">
+
+            <div class="project-index">004</div>
+
+            <div>
+              <h3>Multimodal flow measurement</h3>
+
+              <p class="project-description">
+                Measurement architecture combining ultrasound,
+                electrical conductivity and imaging for real-time
+                characterization of two-phase flows.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <strong>Industrial R&D</strong><br>
+              Ultrasound<br>
+              Conductivity<br>
+              Data fusion
+            </div>
+
+          </article>
+
+
+          <article class="project">
+
+            <div class="project-index">005</div>
+
+            <div>
+              <h3>Dynamic experimental control</h3>
+
+              <p class="project-description">
+                Development of architectures in which acquired
+                information becomes a control variable for
+                automated experimental protocols.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <strong>Research infrastructure</strong><br>
+              Embedded systems<br>
+              Control<br>
+              Real-time
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PLATFORM
+    ========================================== -->
+
+    <section class="section" id="platform">
+
+      <div class="container platform">
+
+        <div>
+
+          <div class="eyebrow">Technical responsibility</div>
+
+          <h2 class="platform-title">
+            Soft matter<br>
+            & <span>rheophysics.</span>
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p class="platform-text">
+            Technical responsibility for an experimental platform
+            dedicated to rheophysics and physico-chemical
+            characterization of complex materials and processes.
+          </p>
+
+          <div class="platform-list">
+
+            <div class="platform-item">
+              <span>Soft matter</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="platform-item">
+              <span>Rheology</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="platform-item">
+              <span>Physico-chemical processes</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="platform-item">
+              <span>Experimental instrumentation</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="platform-item">
+              <span>Imaging / automation</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="platform-item">
+              <span>Reusable architectures</span>
+              <span>R&D</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         APPROACH / CAREER
+    ========================================== -->
+
+    <section class="section" id="about">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">04 / APPROACH</div>
+
+          <div>
+            <h2 class="section-title">
+              Engineering<br>
+              for research.
+            </h2>
+
+            <p class="section-intro">
+              From scientific questions to integrated experimental
+              systems.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">2016 →</div>
+
+            <h3>Instrumentation & experimental engineering</h3>
+
+            <p>
+              Development and integration of experimental
+              instrumentation within a multidisciplinary research
+              laboratory.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">2018 →</div>
+
+            <h3>Embedded systems & experimental control</h3>
+
+            <p>
+              Development of digital and embedded systems for
+              instrument control, acquisition and remote operation.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">2021 →</div>
+
+            <h3>Imaging & intelligent experimentation</h3>
+
+            <p>
+              Integration of real-time image analysis, computer
+              vision and automated decision-making into experimental
+              systems.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">2026</div>
+
+            <h3>Integrated experimental architectures</h3>
+
+            <p>
+              Development of transferable and reusable architectures
+              combining observation, measurement, computation and
+              dynamic control across scientific applications.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Scientific Engineering / Research / Innovation
+      </div>
+
+      <h2 class="footer-title">
+        BUILD THE<br>
+        <span>EXPERIMENT.</span>
+      </h2>
+
+      <div class="footer-bottom">
+
+        <span>WILLIAM BRETT · 2026</span>
+
+        <span>
+          INSTRUMENTATION · IMAGING · COMPUTATION · CONTROL
+        </span>
+
+      </div>
+
     </div>
 
-  <!-- Portfolio Section -->
-  <div class="w3-padding-64 w3-content" id="photos">
-    <h2 class="w3-text-light-grey">Plant development</h2>
-    <hr style="width:200px" class="w3-opacity">
+  </footer>
 
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">
-        <img src="B.png" style="width:100%">
-        <img src="C.png" style="width:100%">
-        <img src="M.png" style="width:100%">
-      </div>
-
-      <div class="w3-half">
-        <img src="D.png" style="width:100%">
-        <img src="E.png" style="width:100%">
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End Portfolio Section -->
-    <!-- Portfolio Section -->
-    <div class="w3-padding-64 w3-content" id="photos">
-      <h2 class="w3-text-light-grey">Physics of living </h2>
-      <hr style="width:200px" class="w3-opacity">
-  
-      <!-- Grid for photos -->
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-          <img src="F.png" style="width:100%">
-          <img src="G.png" style="width:100%">
-          <img src="K.png" style="width:100%">
-        </div>
-  
-        <div class="w3-half">
-          <img src="H.png" style="width:100%">
-          <img src="I.png" style="width:100%">
-          <img src="J.png" style="width:100%">
-        </div>
-      <!-- End photo grid -->
-      </div>
-    <!-- End Portfolio Section -->
-  
-  <!-- Portfolio Section -->
-  <div class="w3-padding-64 w3-content" id="photos">
-    <h2 class="w3-text-light-grey">Acoustics and soft matter, comming soon</h2>
-    <hr style="width:200px" class="w3-opacity">
-  </div>
-
-</div>
-
-
-</body></html>
+</body>
+</html>
