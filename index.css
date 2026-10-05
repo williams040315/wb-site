@@ -1,20 +1,35 @@
 /* =========================================================
-   WILLIAMS BRETT — SCIENTIFIC ENGINEERING
+   WILLIAMS BRETT
+   ENGINEERING FOR RESEARCH
+   Scientific / Technical Portfolio
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
    ========================================================= */
 
 :root {
   --black: #050708;
-  --dark: #090d10;
-  --dark2: #0d1317;
-  --white: #f4f7f7;
-  --white2: #d9e0e1;
-  --grey: #9aa5aa;
-  --grey2: #69757b;
-  --cyan: #55e5dc;
+  --dark: #080d10;
+  --dark-2: #0c1216;
+  --dark-3: #11191e;
+
+  --white: #f2f6f6;
+  --white-2: #d5dede;
+
+  --grey: #9aa6aa;
+  --grey-2: #68757a;
+
+  --cyan: #58e5dc;
+  --cyan-dark: #32bdb7;
+
   --green: #7de39d;
-  --line: rgba(255,255,255,0.12);
-  --line-strong: rgba(255,255,255,0.20);
-  --max: 1480px;
+
+  --line: rgba(255, 255, 255, 0.12);
+  --line-light: rgba(255, 255, 255, 0.18);
+
+  --max-width: 1480px;
 }
 
 
@@ -33,31 +48,36 @@ html {
 }
 
 body {
+  min-height: 100vh;
+
   background:
     radial-gradient(
-      circle at 85% 5%,
-      rgba(85,229,220,0.07),
+      circle at 85% 0%,
+      rgba(88, 229, 220, 0.08),
       transparent 30%
     ),
     var(--black);
 
   color: var(--white);
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   line-height: 1.5;
 
   overflow-x: hidden;
 }
 
-
-/* grille technique */
-
 body::before {
   content: "";
+
   position: fixed;
   inset: 0;
-  z-index: -5;
+
+  z-index: -10;
+
   pointer-events: none;
 
   background-image:
@@ -74,29 +94,28 @@ body::before {
   background-size: 70px 70px;
 }
 
-
-/* lumière d'ambiance */
-
 body::after {
   content: "";
+
   position: fixed;
 
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
 
+  top: -300px;
   right: -250px;
-  top: -250px;
 
-  z-index: -4;
+  z-index: -9;
+
   pointer-events: none;
 
   border-radius: 50%;
 
-  background: rgba(85,229,220,0.05);
+  background:
+    rgba(88, 229, 220, 0.045);
 
   filter: blur(100px);
 }
-
 
 a {
   color: inherit;
@@ -104,21 +123,32 @@ a {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
 }
 
 .container {
-  width: min(
-    var(--max),
-    calc(100% - 80px)
-  );
+  width:
+    min(
+      var(--max-width),
+      calc(100% - 80px)
+    );
 
-  margin: 0 auto;
+  margin:
+    0 auto;
 }
 
 .mono {
-  font-family: Consolas, "Courier New", monospace;
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
 }
 
 .cyan {
@@ -127,26 +157,7 @@ img {
 
 
 /* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.eyebrow {
-  color: var(--cyan);
-
-  font-family: Consolas, "Courier New", monospace;
-
-  font-size: 12px;
-
-  line-height: 1.4;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   NAVIGATION
+   TOP NAVIGATION
    ========================================================= */
 
 nav {
@@ -156,19 +167,35 @@ nav {
   left: 0;
   right: 0;
 
-  height: 72px;
-
   z-index: 1000;
 
-  background: rgba(5,7,8,0.88);
+  height: 92px;
 
-  border-bottom: 1px solid var(--line);
+  background:
+    rgba(5, 7, 8, 0.90);
 
-  backdrop-filter: blur(18px);
+  border-bottom:
+    1px solid
+    var(--line);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
 }
 
 .nav-inner {
+  width:
+    min(
+      var(--max-width),
+      calc(100% - 80px)
+    );
+
   height: 100%;
+
+  margin:
+    0 auto;
 
   display: flex;
 
@@ -177,35 +204,59 @@ nav {
   justify-content: space-between;
 }
 
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
 .brand {
   display: flex;
 
   align-items: center;
 
-  gap: 13px;
+  gap: 16px;
 }
 
 .brand-image {
-  width: 42px;
-  height: 42px;
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
 
   object-fit: cover;
 
   border:
     1px solid
-    rgba(85,229,220,0.5);
+    rgba(88, 229, 220, 0.55);
+
+  background:
+    var(--dark-2);
+
+  box-shadow:
+    0 0 22px
+    rgba(88, 229, 220, 0.08);
+}
+
+.brand-text {
+  display: flex;
+
+  flex-direction: column;
 }
 
 .brand-name {
-  font-size: 15px;
+  color: var(--white);
+
+  font-size: 18px;
+
+  line-height: 1.1;
 
   font-weight: 500;
 
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .brand-role {
-  margin-top: 2px;
+  margin-top: 5px;
 
   color: var(--grey);
 
@@ -216,15 +267,24 @@ nav {
 
   font-size: 9px;
 
+  line-height: 1.3;
+
   letter-spacing: 0.12em;
 
   text-transform: uppercase;
 }
 
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
 .nav-links {
   display: flex;
 
-  gap: 28px;
+  align-items: center;
+
+  gap: 32px;
 
   color: var(--grey);
 
@@ -241,11 +301,36 @@ nav {
 }
 
 .nav-links a {
-  transition: color .2s ease;
+  position: relative;
+
+  transition:
+    color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background:
+    var(--cyan);
+
+  transition:
+    width 0.2s ease;
 }
 
 .nav-links a:hover {
   color: var(--cyan);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 
@@ -256,7 +341,7 @@ nav {
 .hero {
   min-height: 100vh;
 
-  padding-top: 72px;
+  padding-top: 92px;
 
   display: flex;
 
@@ -267,19 +352,19 @@ nav {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 1.35fr)
-    minmax(300px, 0.65fr);
+    minmax(0, 1.25fr)
+    minmax(360px, 0.75fr);
 
-  gap: 75px;
+  gap: 90px;
 
   align-items: center;
 }
 
 .hero-content {
   padding:
-    85px
+    80px
     0
-    70px;
+    65px;
 }
 
 .hero-title {
@@ -294,33 +379,32 @@ nav {
 
   line-height: 0.88;
 
-  letter-spacing: -0.06em;
+  letter-spacing: -0.065em;
 
   font-weight: 400;
 }
-
 
 .hero-title span {
   color: var(--cyan);
 }
 
 .hero-description {
-  max-width: 700px;
+  max-width: 720px;
 
-  margin-top: 42px;
+  margin-top: 34px;
 
-  color: var(--white2);
+  color: var(--white-2);
 
   font-size:
     clamp(
-      18px,
-      2vw,
-      25px
+      17px,
+      1.7vw,
+      22px
     );
 
-  line-height: 1.3;
+  line-height: 1.35;
 
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 
@@ -333,55 +417,48 @@ nav {
 
   flex-wrap: wrap;
 
-  gap: 9px;
+  gap: 8px;
 
-  margin-top: 30px;
+  margin-top: 27px;
 }
 
 .tag {
   padding:
-    10px
-    13px;
+    9px
+    12px;
 
   border:
     1px solid
-    rgba(85,229,220,0.28);
+    rgba(88, 229, 220, 0.28);
 
   background:
-    rgba(85,229,220,0.025);
+    rgba(88, 229, 220, 0.025);
 
-  color: var(--white2);
+  color: var(--white-2);
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-size: 12px;
 
-  font-size: 13px;
-
-  line-height: 1.2;
-
-  letter-spacing: 0.01em;
+  line-height: 1.25;
 
   transition:
-    border-color .2s ease,
-    background .2s ease,
-    color .2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .tag:hover {
   color: var(--cyan);
 
   border-color:
-    rgba(85,229,220,0.65);
+    rgba(88, 229, 220, 0.65);
 
   background:
-    rgba(85,229,220,0.06);
+    rgba(88, 229, 220, 0.06);
 }
 
 
 /* =========================================================
-   BUTTONS
+   HERO BUTTONS
    ========================================================= */
 
 .hero-buttons {
@@ -391,17 +468,23 @@ nav {
 
   gap: 10px;
 
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
   padding:
-    12px
-    17px;
+    11px
+    16px;
 
   border:
     1px solid
-    var(--line-strong);
+    var(--line-light);
 
   color: var(--white);
 
@@ -417,34 +500,44 @@ nav {
   text-transform: uppercase;
 
   transition:
-    color .2s ease,
-    border-color .2s ease,
-    background .2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .button:hover {
   color: var(--cyan);
 
-  border-color: var(--cyan);
+  border-color:
+    var(--cyan);
 
   background:
-    rgba(85,229,220,0.04);
+    rgba(88, 229, 220, 0.04);
 }
 
 
 /* =========================================================
-   IDENTITY
+   HERO IDENTITY / AVATAR
    ========================================================= */
 
 .identity {
-  padding: 14px;
+  width: 100%;
+  max-width: 520px;
+
+  margin-left: auto;
+
+  padding: 18px;
 
   border:
     1px solid
     var(--line);
 
   background:
-    rgba(255,255,255,0.018);
+    rgba(255, 255, 255, 0.018);
+
+  box-shadow:
+    0 25px 80px
+    rgba(0, 0, 0, 0.25);
 }
 
 .avatar {
@@ -454,12 +547,17 @@ nav {
 
   object-fit: cover;
 
-  background: var(--dark2);
+  background:
+    var(--dark-2);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
 }
 
 .identity-info {
   padding:
-    21px
+    22px
     4px
     6px;
 }
@@ -467,21 +565,21 @@ nav {
 .identity-info h2 {
   font-size: 28px;
 
-  font-weight: 400;
-
   line-height: 1;
+
+  font-weight: 400;
 
   letter-spacing: -0.05em;
 }
 
 .identity-info p {
-  margin-top: 10px;
+  margin-top: 9px;
 
   color: var(--grey);
 
   font-size: 13px;
 
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .status {
@@ -491,9 +589,9 @@ nav {
 
   gap: 8px;
 
-  margin-top: 17px;
+  margin-top: 16px;
 
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
@@ -502,6 +600,8 @@ nav {
 
   font-size: 9px;
 
+  letter-spacing: 0.06em;
+
   text-transform: uppercase;
 }
 
@@ -509,9 +609,12 @@ nav {
   width: 6px;
   height: 6px;
 
+  flex-shrink: 0;
+
   border-radius: 50%;
 
-  background: var(--green);
+  background:
+    var(--green);
 
   box-shadow:
     0 0 12px
@@ -525,7 +628,7 @@ nav {
 
 .section {
   padding:
-    105px
+    100px
     0;
 
   border-top:
@@ -537,12 +640,12 @@ nav {
   display: grid;
 
   grid-template-columns:
-    0.30fr
-    1.70fr;
+    0.28fr
+    1.72fr;
 
-  gap: 65px;
+  gap: 60px;
 
-  margin-bottom: 70px;
+  margin-bottom: 62px;
 }
 
 .section-number {
@@ -553,9 +656,7 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 16px;
-
-  line-height: 1;
+  font-size: 14px;
 
   letter-spacing: 0.08em;
 }
@@ -563,33 +664,33 @@ nav {
 .section-title {
   font-size:
     clamp(
-      42px,
-      5.5vw,
-      75px
+      38px,
+      4.8vw,
+      68px
     );
 
-  line-height: 0.88;
-
-  letter-spacing: -0.07em;
+  line-height: 0.9;
 
   font-weight: 400;
+
+  letter-spacing: -0.07em;
 }
 
 .section-intro {
-  max-width: 700px;
+  max-width: 760px;
 
-  margin-top: 25px;
+  margin-top: 22px;
 
   color: var(--grey);
 
   font-size:
     clamp(
-      16px,
-      1.6vw,
-      20px
+      15px,
+      1.5vw,
+      19px
     );
 
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 
@@ -601,18 +702,20 @@ nav {
   display: grid;
 
   grid-template-columns:
-    1.05fr
-    0.95fr;
+    1fr
+    1fr;
 
   gap: 75px;
 }
 
 .large-statement {
+  max-width: 680px;
+
   font-size:
     clamp(
-      34px,
-      4vw,
-      54px
+      30px,
+      3.6vw,
+      50px
     );
 
   line-height: 1;
@@ -627,18 +730,18 @@ nav {
 .text {
   color: var(--grey);
 
-  font-size: 16px;
+  font-size: 15px;
 
   line-height: 1.7;
 }
 
 .text p + p {
-  margin-top: 22px;
+  margin-top: 20px;
 }
 
 
 /* =========================================================
-   ENGINEERING METHODS
+   METHODS
    ========================================================= */
 
 .methods {
@@ -657,9 +760,9 @@ nav {
 }
 
 .method {
-  min-height: 275px;
+  min-height: 270px;
 
-  padding: 30px;
+  padding: 28px;
 
   border-right:
     1px solid
@@ -670,40 +773,40 @@ nav {
     var(--line);
 
   background:
-    rgba(255,255,255,0.008);
+    rgba(255, 255, 255, 0.008);
 
   transition:
-    background .25s ease,
-    border-color .25s ease;
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .method:hover {
   background:
-    rgba(85,229,220,0.035);
+    rgba(88, 229, 220, 0.035);
 
   border-color:
-    rgba(85,229,220,0.28);
+    rgba(88, 229, 220, 0.25);
 }
 
 .method-number {
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
     "Courier New",
     monospace;
 
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .method h3 {
-  margin-top: 55px;
+  margin-top: 50px;
 
   font-size:
     clamp(
-      25px,
-      2.5vw,
-      34px
+      23px,
+      2.4vw,
+      32px
     );
 
   line-height: 0.96;
@@ -714,19 +817,19 @@ nav {
 }
 
 .method p {
-  max-width: 400px;
+  max-width: 410px;
 
-  margin-top: 15px;
+  margin-top: 14px;
 
   color: var(--grey);
 
-  font-size: 14px;
+  font-size: 13px;
 
   line-height: 1.55;
 }
 
 .method-tech {
-  margin-top: 21px;
+  margin-top: 19px;
 
   color: var(--cyan);
 
@@ -735,7 +838,7 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 11px;
+  font-size: 10px;
 
   line-height: 1.5;
 
@@ -761,8 +864,8 @@ nav {
   padding:
     0
     0
-    75px
-    48px;
+    70px
+    45px;
 }
 
 .timeline-item:last-child {
@@ -774,8 +877,8 @@ nav {
 
   position: absolute;
 
-  left: -5px;
   top: 4px;
+  left: -5px;
 
   width: 9px;
   height: 9px;
@@ -787,7 +890,7 @@ nav {
 
   box-shadow:
     0 0 15px
-    rgba(85,229,220,0.7);
+    rgba(88, 229, 220, 0.65);
 }
 
 .timeline-year {
@@ -798,36 +901,36 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 12px;
+  font-size: 11px;
 
   letter-spacing: 0.08em;
 }
 
 .timeline-item h3 {
-  margin-top: 10px;
+  margin-top: 9px;
 
   font-size:
     clamp(
-      28px,
-      3.5vw,
-      48px
+      26px,
+      3.2vw,
+      45px
     );
 
-  line-height: 0.94;
-
-  letter-spacing: -0.06em;
+  line-height: 0.95;
 
   font-weight: 400;
+
+  letter-spacing: -0.06em;
 }
 
 .timeline-item p {
-  max-width: 800px;
+  max-width: 820px;
 
-  margin-top: 15px;
+  margin-top: 14px;
 
   color: var(--grey);
 
-  font-size: 15px;
+  font-size: 14px;
 
   line-height: 1.65;
 }
@@ -835,7 +938,7 @@ nav {
 .timeline-link {
   display: inline-block;
 
-  margin-top: 18px;
+  margin-top: 15px;
 
   color: var(--cyan);
 
@@ -844,7 +947,7 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 10px;
+  font-size: 9px;
 
   letter-spacing: 0.08em;
 
@@ -857,18 +960,18 @@ nav {
    ========================================================= */
 
 .project {
-  padding:
-    48px
-    0;
-
   display: grid;
 
   grid-template-columns:
-    50px
+    45px
     1fr
-    220px;
+    200px;
 
-  gap: 32px;
+  gap: 28px;
+
+  padding:
+    42px
+    0;
 
   border-bottom:
     1px solid
@@ -876,45 +979,45 @@ nav {
 }
 
 .project-number {
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
     "Courier New",
     monospace;
 
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .project h3 {
   font-size:
     clamp(
-      29px,
-      4vw,
-      52px
+      27px,
+      3.6vw,
+      48px
     );
 
-  line-height: 0.93;
-
-  letter-spacing: -0.065em;
+  line-height: 0.95;
 
   font-weight: 400;
+
+  letter-spacing: -0.06em;
 }
 
 .project p {
-  max-width: 750px;
+  max-width: 760px;
 
-  margin-top: 15px;
+  margin-top: 14px;
 
   color: var(--grey);
 
-  font-size: 15px;
+  font-size: 14px;
 
   line-height: 1.6;
 }
 
 .project-meta {
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
@@ -923,7 +1026,7 @@ nav {
 
   font-size: 9px;
 
-  line-height: 2;
+  line-height: 1.9;
 
   text-transform: uppercase;
 }
@@ -936,14 +1039,14 @@ nav {
 
 
 /* =========================================================
-   IMAGE PLACEHOLDER
+   IMAGE BLOCKS
    ========================================================= */
 
 .image-placeholder {
   grid-column:
     2 / 4;
 
-  min-height: 210px;
+  min-height: 230px;
 
   margin-top: 20px;
 
@@ -953,6 +1056,8 @@ nav {
 
   justify-content: center;
 
+  overflow: hidden;
+
   border:
     1px solid
     var(--line);
@@ -960,22 +1065,29 @@ nav {
   background:
     linear-gradient(
       135deg,
-      rgba(85,229,220,0.045),
-      rgba(255,255,255,0.01)
+      rgba(88, 229, 220, 0.045),
+      rgba(255, 255, 255, 0.008)
     );
 
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
     "Courier New",
     monospace;
 
-  font-size: 10px;
+  font-size: 9px;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 
   text-transform: uppercase;
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
 
@@ -990,24 +1102,24 @@ nav {
     1fr
     1fr;
 
-  gap: 80px;
+  gap: 75px;
 }
 
 .platform-title {
-  margin-top: 22px;
+  margin-top: 20px;
 
   font-size:
     clamp(
-      42px,
-      5.5vw,
-      75px
+      38px,
+      4.8vw,
+      68px
     );
 
-  line-height: 0.86;
-
-  letter-spacing: -0.075em;
+  line-height: 0.88;
 
   font-weight: 400;
+
+  letter-spacing: -0.07em;
 }
 
 .platform-title span {
@@ -1017,13 +1129,13 @@ nav {
 .platform-text {
   color: var(--grey);
 
-  font-size: 17px;
+  font-size: 15px;
 
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .platform-list {
-  margin-top: 30px;
+  margin-top: 28px;
 
   border-top:
     1px solid
@@ -1033,12 +1145,14 @@ nav {
 .platform-row {
   display: flex;
 
+  align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
 
   padding:
-    14px
+    13px
     0;
 
   border-bottom:
@@ -1050,9 +1164,7 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 11px;
-
-  line-height: 1.3;
+  font-size: 10px;
 }
 
 .platform-row span:last-child {
@@ -1061,16 +1173,16 @@ nav {
 
 
 /* =========================================================
-   DYNAMIC LOOP
+   DYNAMIC EXPERIMENT LOOP
    ========================================================= */
 
 .loop {
-  margin-top: 65px;
-
   display: grid;
 
   grid-template-columns:
     repeat(5, 1fr);
+
+  margin-top: 60px;
 
   border:
     1px solid
@@ -1078,9 +1190,9 @@ nav {
 }
 
 .loop-item {
-  min-height: 140px;
+  min-height: 135px;
 
-  padding: 22px;
+  padding: 20px;
 
   display: flex;
 
@@ -1098,22 +1210,22 @@ nav {
 }
 
 .loop-item small {
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
     "Courier New",
     monospace;
 
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .loop-item strong {
-  font-size: 18px;
+  font-size: 17px;
+
+  line-height: 1.1;
 
   font-weight: 400;
-
-  letter-spacing: -0.02em;
 }
 
 .loop-item span {
@@ -1124,11 +1236,46 @@ nav {
     "Courier New",
     monospace;
 
-  font-size: 9px;
+  font-size: 8px;
 
   line-height: 1.4;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
+}
+
+
+/* =========================================================
+   GENERAL IMAGE AREA
+   ========================================================= */
+
+.media-frame {
+  width: 100%;
+
+  min-height: 300px;
+
+  margin-top: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    var(--dark-2);
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
 
@@ -1138,7 +1285,7 @@ nav {
 
 footer {
   padding:
-    110px
+    100px
     0
     35px;
 
@@ -1148,20 +1295,20 @@ footer {
 }
 
 .footer-title {
-  margin-top: 25px;
+  margin-top: 22px;
 
   font-size:
     clamp(
-      55px,
-      7.5vw,
-      120px
+      50px,
+      7vw,
+      105px
     );
 
-  line-height: 0.8;
-
-  letter-spacing: -0.085em;
+  line-height: 0.82;
 
   font-weight: 400;
+
+  letter-spacing: -0.08em;
 }
 
 .footer-title span {
@@ -1173,15 +1320,15 @@ footer {
 
   flex-wrap: wrap;
 
-  gap: 9px;
+  gap: 8px;
 
-  margin-top: 50px;
+  margin-top: 45px;
 }
 
 .footer-link {
   padding:
-    12px
-    16px;
+    11px
+    15px;
 
   border:
     1px solid
@@ -1196,14 +1343,14 @@ footer {
 
   font-size: 9px;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
 
   text-transform: uppercase;
 
   transition:
-    color .2s ease,
-    border-color .2s ease,
-    background .2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .footer-link:hover {
@@ -1213,15 +1360,17 @@ footer {
     var(--cyan);
 
   background:
-    rgba(85,229,220,0.035);
+    rgba(88, 229, 220, 0.035);
 }
 
 .footer-bottom {
-  margin-top: 65px;
+  margin-top: 60px;
 
-  padding-top: 16px;
+  padding-top: 15px;
 
   display: flex;
+
+  align-items: center;
 
   justify-content: space-between;
 
@@ -1231,14 +1380,14 @@ footer {
     1px solid
     var(--line);
 
-  color: var(--grey2);
+  color: var(--grey-2);
 
   font-family:
     Consolas,
     "Courier New",
     monospace;
 
-  font-size: 9px;
+  font-size: 8px;
 
   letter-spacing: 0.08em;
 
@@ -1252,28 +1401,41 @@ footer {
 
 @media (max-width: 1100px) {
 
-  .container {
+  .container,
+  .nav-inner {
     width:
       calc(100% - 60px);
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
+
     gap: 50px;
   }
 
+  .hero-content {
+    padding-bottom: 20px;
+  }
+
   .identity {
-    max-width: 450px;
+    max-width: 480px;
+
+    margin-left: 0;
   }
 
   .section-header {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
   }
 
   .approach-grid {
-    grid-template-columns: 1fr;
-    gap: 55px;
+    grid-template-columns:
+      1fr;
+
+    gap: 50px;
   }
 
   .methods {
@@ -1282,8 +1444,10 @@ footer {
   }
 
   .platform-grid {
-    grid-template-columns: 1fr;
-    gap: 55px;
+    grid-template-columns:
+      1fr;
+
+    gap: 50px;
   }
 
   .loop {
@@ -1291,16 +1455,15 @@ footer {
       repeat(2, 1fr);
   }
 
+  .loop-item:nth-child(2) {
+    border-right: none;
+  }
+
   .loop-item {
     border-bottom:
       1px solid
       var(--line);
   }
-
-  .loop-item:nth-child(2) {
-    border-right: none;
-  }
-
 }
 
 
@@ -1310,22 +1473,27 @@ footer {
 
 @media (max-width: 700px) {
 
-  .container {
+  .container,
+  .nav-inner {
     width:
       calc(100% - 32px);
   }
 
   nav {
-    height: 64px;
+    height: 76px;
+  }
+
+  .brand {
+    gap: 11px;
   }
 
   .brand-image {
-    width: 36px;
-    height: 36px;
+    width: 46px;
+    height: 46px;
   }
 
   .brand-name {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .brand-role {
@@ -1337,33 +1505,31 @@ footer {
   }
 
   .hero {
-    padding-top: 64px;
+    padding-top: 76px;
   }
 
   .hero-content {
     padding:
-      65px
+      60px
       0
-      25px;
+      20px;
   }
 
   .hero-title {
     font-size:
-      15vw;
+      11vw;
 
-    line-height: 0.83;
+    line-height: 0.88;
   }
 
   .hero-description {
-    margin-top: 30px;
+    margin-top: 25px;
 
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .hero-tags {
-    gap: 7px;
-
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .tag {
@@ -1371,11 +1537,26 @@ footer {
       8px
       10px;
 
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .hero-buttons {
-    margin-top: 25px;
+    margin-top: 23px;
+  }
+
+  .identity {
+    padding: 12px;
+  }
+
+  .identity-info {
+    padding:
+      18px
+      3px
+      5px;
+  }
+
+  .identity-info h2 {
+    font-size: 25px;
   }
 
   .section {
@@ -1385,61 +1566,50 @@ footer {
   }
 
   .section-header {
-    margin-bottom: 50px;
-  }
-
-  .section-number {
-    font-size: 13px;
+    margin-bottom: 45px;
   }
 
   .section-title {
     font-size:
-      12vw;
+      11vw;
   }
 
   .section-intro {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .large-statement {
     font-size:
-      9vw;
+      8.5vw;
   }
 
   .text {
-    font-size: 15px;
-  }
-
-  .methods {
-    grid-template-columns: 1fr;
-  }
-
-  .method {
-    min-height: 250px;
-
-    padding: 25px;
-  }
-
-  .method h3 {
-    margin-top: 45px;
-
-    font-size: 30px;
-  }
-
-  .method p {
     font-size: 14px;
   }
 
-  .method-tech {
-    font-size: 10px;
+  .methods {
+    grid-template-columns:
+      1fr;
+  }
+
+  .method {
+    min-height: 235px;
+
+    padding: 24px;
+  }
+
+  .method h3 {
+    margin-top: 42px;
+
+    font-size: 28px;
   }
 
   .timeline-item {
     padding:
       0
       0
-      60px
-      35px;
+      55px
+      32px;
   }
 
   .timeline-item h3 {
@@ -1453,13 +1623,13 @@ footer {
 
   .project {
     grid-template-columns:
-      32px
+      30px
       1fr;
 
-    gap: 16px;
+    gap: 15px;
 
     padding:
-      38px
+      35px
       0;
   }
 
@@ -1473,49 +1643,55 @@ footer {
   }
 
   .project-meta {
-    grid-column: 2;
+    grid-column:
+      2;
   }
 
   .image-placeholder {
-    grid-column: 2;
+    grid-column:
+      2;
 
     min-height: 160px;
   }
 
   .platform-title {
     font-size:
-      12vw;
+      11vw;
   }
 
   .platform-text {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .loop {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
   .loop-item {
-    min-height: 120px;
+    min-height: 115px;
 
     border-right: none;
   }
 
   footer {
     padding:
-      80px
+      75px
       0
       25px;
   }
 
   .footer-title {
     font-size:
-      15vw;
+      14vw;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 10px;
+
+    align-items: flex-start;
+
+    gap: 8px;
   }
 }
 
@@ -1526,33 +1702,44 @@ footer {
 
 @media (max-width: 420px) {
 
-  .container {
+  .container,
+  .nav-inner {
     width:
       calc(100% - 24px);
   }
 
+  .brand-image {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
   .hero-title {
     font-size:
-      16vw;
+      12vw;
   }
 
   .tag {
     width: 100%;
+
     text-align: center;
   }
 
   .section-title {
     font-size:
-      13vw;
+      12vw;
   }
 
   .method h3 {
-    font-size: 27px;
+    font-size: 26px;
   }
 
   .project {
     grid-template-columns:
-      27px
+      25px
       1fr;
   }
 }
